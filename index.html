@@ -697,7 +697,7 @@
         
       </div>
     </div>
-    <div class="letter-date">25. Mai 2026</div>
+    <div class="letter-date"><span id="letter-date"></span></div>
     <div class="letter-subject">
       Bewerbung um ein Praktikum als Fachinformatiker für Systemintegration
     </div>
@@ -859,6 +859,11 @@ function closeModal(e) {
   if (e.target === document.getElementById('pdf-modal')) closePDFModal();
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDFModal(); });
+
+// ── Dynamisches Datum im Anschreiben ──
+const dateOpts = { day: 'numeric', month: 'long', year: 'numeric' };
+const todayStr = new Date().toLocaleDateString('de-DE', dateOpts);
+document.getElementById('letter-date').textContent = todayStr;
 
 // Init
 buildCerts();
